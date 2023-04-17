@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Users</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1> Users </h1>
+				</div>
+			</div>
+			<div class="row" th:each="user : ${users}">
+				<div class="col-md-4"><span th:text="${user.userData.name}"> Name </span></div>
+				<div class="col-md-4"><span th:text="${user.userData.surname}"> Surname </span></div>
+				<div class="col-md-2">
+					<a class="btn btn-info" href="#" th:href="@{/edit/{id}(id=${user.userId})}">Edit</a>
+				</div>
+				<div class="col-md-2">
+					<a class="btn btn-danger" href="#" th:href="@{/delete/{id}(id=${user.userId})}">Delete</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<a class="btn btn-success" href="#" th:href="@{/new}">+ Add user</a>
+			</div>
+		</div>
+	</footer>
+</html>

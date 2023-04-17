@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Edit user </h1>
+        </div>
+    </div>
+    <div class="row">
+        <form action="#" class="form-horizontal"
+              th:action="@{/update/{id}(id=${userId})}"
+              th:object="${user}"
+              method="post">
+            <div class="col-md-4">Name:</div>
+            <div class="col-md-8"><input type="text" th:field="*{name}" required /></div>
+            <div class="col-md-4">Surname:</div>
+            <div class="col-md-8"><input type="text" th:field="*{surname}" required /></div>
+            <div class="col-md-12">
+                <input type="submit" value="Update user" class="btn btn-success" />
+                <a class="btn btn-info" href="#" th:href="@{/list}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
