@@ -18,5 +18,5 @@ Simple MVC website providing access to user-server. Contains UsersAPI client imp
 
 1. Build the project ```mvn clean install```
 2. Run user-server - from built .jar or directly by ```mvn -f ./user-server/pom.xml spring-boot:run```
-3. Run user-thin-web - from built .jar or directly by ```mvn -f ./user-thin-web/pom.xml spring-boot:run``` in user-thin-web directory
+3. Run user-thin-web - from built .jar or directly by ```mvn -f ./user-thin-web/pom.xml spring-boot:run```
 4. Open <http://localhost:8081>
