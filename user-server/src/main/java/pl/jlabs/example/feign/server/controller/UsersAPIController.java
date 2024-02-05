@@ -11,6 +11,7 @@ import pl.jlabs.example.feign.client.model.UserData;
 import pl.jlabs.example.feign.server.service.UsersService;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * It implements {@link pl.jlabs.example.feign.client.UsersAPI} from client, which is a FeignClient interface - thanks to it, we keep both client and controller uniform
@@ -34,20 +35,14 @@ public class UsersAPIController implements UsersAPI {
 
     @Override
     public User getUser(Long userId) {
-        final User user = usersService.getUser(userId);
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            return user;
-        }
+        final Optional<User> user = Optional.ofNullable(usersService.getUser(userId));
+        return user.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override
     public void updateUser(Long userId, UserData user) {
-        final User updated = usersService.updateUser(userId, user);
-        if (updated == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        final Optional<User> updated = Optional.ofNullable(usersService.updateUser(userId, user));
+        updated.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override
